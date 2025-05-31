@@ -16,13 +16,13 @@ export function Navbar() {
           >
             about.
           </Link>
-          <Link href="/about" className=" hover:text-white">
+          <Link href="/" className=" hover:text-white">
             projects.
           </Link>
-          <Link href="/contact" className=" hover:text-white">
+          <Link href="/" className=" hover:text-white">
             gallery.
           </Link>
-          <Link href="/contact" className=" hover:text-white">
+          <Link href="/" className=" hover:text-white">
             contact.
           </Link>
         </div>

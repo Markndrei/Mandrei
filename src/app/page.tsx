@@ -10,14 +10,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex items-center justify-center transition-all duration-300 space-x-40 mx-[10%]">
-      <div>
-        <h5 className="font-[">i am</h5>
+      <div className="space-y-4">
+        <h5 className="-my-1">i am</h5>
         <h1
           className="text-[4.5rem] font-black
         bg-gradient-to-r from-[#404040] to-[#404040]
         dark:from-[#80CEFF] dark:to-[#F7B2FD]
         bg-clip-text text-transparent
-        transition-colors duration-500"
+        transition-colors duration-500 my-0"
         >
           mark encanto.
         </h1>
@@ -25,10 +25,11 @@ export default function Home() {
           an aspiring Front-end Developer, UI/UX Designer, Graphic Artist, and
           Photographer.
         </h3>
-        <DynamicButton
-          text="View Resume"
-          className="mt-4 px-6 py-2 text-white"
-        />
+        {currentTheme === "dark" ? (
+          <DynamicButton text="VIEW RESUME" variant="dark" />
+        ) : (
+          <DynamicButton text="VIEW RESUME" variant="primary" />
+        )}
       </div>
       {currentTheme === "dark" ? (
         <Image src="/hero.svg" width={450} height={450} alt="Dark mode image" />

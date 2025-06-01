@@ -7,7 +7,7 @@ import { useScrollSpy } from "@/hooks/useScrollSpy";
 
 export default function Home() {
   const { theme, systemTheme } = useTheme();
-  const sections = ["hero", "about", "projects", "gallery", "contact"];
+  const sections = ["hero.", "about.", "projects.", "gallery.", "contact."];
   const sectionIds = ["hero", "about", "projects", "gallery", "contact"];
   const { currentSection, scrollToSection } = useScrollSpy(sectionIds);
 

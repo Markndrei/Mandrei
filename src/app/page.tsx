@@ -4,7 +4,6 @@ import Image from "next/image";
 import { DynamicButton } from "@/components/DynamicButton";
 import SideNavigation from "@/components/SideNavigation";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
-import Cards from "@/components/ui/Card";
 
 export default function Home() {
   const { theme, systemTheme } = useTheme();
@@ -129,8 +128,8 @@ export default function Home() {
               I am a designer slash developer based in Iloilo, Philippines.
             </h4>
             <p className="text-[1.2rem] text-gray-700 dark:text-gray-300 mt-4 font-normal">
-              Fell for intuitive design in 2016. When I'm not tweaking REMs, I'm
-              probably chasing wins on League.
+              Fell for intuitive design in 2016. When I&apos;m not tweaking
+              REMs, I&apos;m probably chasing wins on League.
             </p>
           </div>
         </section>
@@ -153,7 +152,6 @@ export default function Home() {
               builds.
             </p>
           </div>
-          <Cards />
         </section>
 
         {/* Gallery Section */}

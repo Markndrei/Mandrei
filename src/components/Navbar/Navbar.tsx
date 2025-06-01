@@ -3,7 +3,7 @@ import { ThemeToggle } from "../theme-toggle";
 
 export function Navbar() {
   return (
-    <nav className="p-4 px-20">
+    <nav className="p-4 px-20 sticky top-0 z-50 backdrop-blur-3xl bg-white/30 dark:bg-black/20 shadow-md transition-colors duration-300">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="text-lg font-bold tracking-widest">
           markndrei.

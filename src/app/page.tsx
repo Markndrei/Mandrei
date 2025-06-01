@@ -91,7 +91,7 @@ export default function Home() {
           <div className="max-w-2xl text-center">
             <h2 className="text-3xl font-bold mb-4">About Me</h2>
             <p className="text-gray-700 dark:text-gray-300">
-              Hello! I'm Mark, a passionate front-end developer who loves
+              Hello! I&apos;m Mark, a passionate front-end developer who loves
               designing engaging user experiences. I enjoy crafting clean,
               accessible, and responsive web applications using modern
               technologies.

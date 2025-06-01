@@ -4,6 +4,7 @@ import Image from "next/image";
 import { DynamicButton } from "@/components/DynamicButton";
 import SideNavigation from "@/components/SideNavigation";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
+import Cards from "@/components/ui/Card";
 
 export default function Home() {
   const { theme, systemTheme } = useTheme();
@@ -27,7 +28,7 @@ export default function Home() {
       <main className="px-[10%]">
         <section
           id="hero"
-          className="flex flex-col items-center justify-center min-h-screen space-y-10 md:flex-row md:space-y-0 md:space-x-40"
+          className="flex flex-col-reverse items-center justify-center min-h-screen gap-10 px-6 sm:px-10 md:flex-row md:gap-20 lg:px-[10%]"
         >
           <div className="space-y-4">
             <div
@@ -135,17 +136,24 @@ export default function Home() {
         </section>
 
         {/* Projects Section */}
-        <section
-          id="projects"
-          className="min-h-screen flex items-center justify-center px-10 bg-gray-100 dark:bg-gray-800"
-        >
-          <div className="max-w-3xl text-center">
-            <h2 className="text-3xl font-bold mb-4">Projects</h2>
-            <p className="text-gray-700 dark:text-gray-300">
-              Here are some of the projects I’ve worked on, including portfolio
-              websites, mobile UI designs, and interactive front-end builds.
+        <section id="projects" className="min-h-screen flex px-10  pt-30">
+          <div className="max-w-[50%] text-left">
+            <h1
+              className="text-[4.5rem] font-black
+                bg-gradient-to-r from-[#404040] to-[#404040]
+                dark:from-[#80CEFF] dark:to-[#F7B2FD]
+                bg-clip-text text-transparent
+                transition-colors duration-500 my-0"
+            >
+              projects.
+            </h1>
+            <p className="dark:font-light">
+              Here are some of the projects I&apos;ve worked on, including
+              portfolio websites, mobile UI designs, and interactive front-end
+              builds.
             </p>
           </div>
+          <Cards />
         </section>
 
         {/* Gallery Section */}

@@ -5,6 +5,7 @@ import { DynamicButton } from "@/components/DynamicButton";
 import SideNavigation from "@/components/SideNavigation";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import ProjectCard from "@/components/ProjectCards";
+import { DirectionAwareHover } from "@/components/ui/DirectionAwareHover";
 
 export default function Home() {
   const { theme, systemTheme } = useTheme();
@@ -28,60 +29,49 @@ export default function Home() {
       <main className="px-[10%]">
         <section
           id="hero"
-          className="flex flex-col-reverse items-center justify-center min-h-screen gap-10 px-6 sm:px-10 md:flex-row md:gap-20 lg:px-[10%]"
+          className="relative flex flex-col-reverse items-center justify-center min-h-screen gap-10 px-6 sm:px-10 md:flex-row md:gap-20"
         >
-          <div className="space-y-4">
-            <div
-              className={`
-          absolute inset-0 pointer-events-none transition-opacity duration-500
-          ${currentTheme === "light" ? "opacity-100" : "opacity-0"}
-        `}
-            >
-              {/* Top border */}
-              <div className="absolute top-[7.5%] left-[5%] right-[47%] h-[0.07rem] bg-gray-500"></div>
-              {/* Bottom border */}
-              <div className="absolute bottom-[86%] left-[5%] right-[47%] h-[0.07rem] bg-gray-500"></div>
-              {/* Left border */}
-              <div className="absolute top-[6%] bottom-[85%] left-[8%] w-[0.07rem] bg-gray-500"></div>
-              {/* Right border */}
-              <div className="absolute top-[6%] bottom-[85%] right-[50%] w-[0.07rem] bg-gray-500"></div>
-            </div>
-            <h5 className="-my-1">i am</h5>
+          {/* Text Content */}
+          <div className="relative z-10 space-y-4 max-w-xl">
+            <h5 className="-my-1 text-sm uppercase tracking-widest text-gray-600 dark:text-gray-400">
+              i am
+            </h5>
             <h1
-              className="text-[4.5rem] font-black
-                bg-gradient-to-r from-[#404040] to-[#404040]
-                dark:from-[#80CEFF] dark:to-[#F7B2FD]
-                bg-clip-text text-transparent
-                transition-colors duration-500 my-0"
+              className="text-[4rem] font-black leading-[1.1]
+          bg-gradient-to-r from-[#404040] to-[#404040]
+          dark:from-[#80CEFF] dark:to-[#F7B2FD]
+          bg-clip-text text-transparent
+          transition-colors duration-500"
             >
               mark encanto.
             </h1>
-            <h3 className="text-[1.2rem] font-light text-gray-700 dark:text-gray-300">
+            <h3 className="text-lg sm:text-xl font-light text-gray-700 dark:text-gray-300">
               an aspiring Front-end Developer, UI/UX Designer, Graphic Artist,
               and Photographer.
             </h3>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View Mark Encanto's Resume"
+            >
               <DynamicButton
                 text="VIEW RESUME"
                 variant={currentTheme === "dark" ? "dark" : "primary"}
               />
             </a>
           </div>
-          {currentTheme === "dark" ? (
+
+          {/* Hero Image */}
+          <div className="relative z-10">
             <Image
-              src="/hero.svg"
+              src={currentTheme === "dark" ? "/hero.svg" : "/hero-light.svg"}
               width={450}
               height={450}
-              alt="Dark mode image"
+              alt="Illustration of developer in dark/light theme"
+              priority
             />
-          ) : (
-            <Image
-              src="/hero-light.svg"
-              width={450}
-              height={450}
-              alt="Light mode image"
-            />
-          )}
+          </div>
         </section>
 
         {/* About Section */}
@@ -217,6 +207,79 @@ export default function Home() {
                 "Particles",
               ]}
             />
+            <ProjectCard
+              title={"Rekom: Movie Recommendation System"}
+              description={
+                "Rekom is a hybrid recommendation system that combines collaborative filtering, content-based filtering, and NLP techniques to deliver personalized movie suggestions. By analyzing user preferences and movie attributes, it solves the cold start problem while improving recommendation accuracy."
+              }
+              image={"/rekom.png"}
+              link={"https://github.com/Markndrei/CCS-230-Final-Project"}
+              tags={[
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "Tailwind CSS",
+                "Fullstack Development",
+                "Web Development",
+                "UI/UX Design",
+                "Machine Learning",
+                "Recommendation System",
+                "Collaborative Filtering",
+                "Content-Based Filtering",
+                "Data Mining",
+              ]}
+            />
+            <ProjectCard
+              title={"Sentisize: Emotion Group Analysis Web App"}
+              description={
+                "Sentisize is a web application designed to analyze and visualize group emotions through text data. It employs natural language processing (NLP) techniques to extract emotional sentiments from user-generated content, providing insights into collective feelings and trends."
+              }
+              image={"/sentisize.png"}
+              link={"https://github.com/Markndrei/Data-Mining"}
+              tags={[
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "Tailwind CSS",
+                "Frontend",
+                "Fullstack Development",
+                "Web Development",
+                "UI/UX Design",
+                "Machine Learning",
+                "NLP",
+                "Support Vector Machine",
+                "Sentiment Analysis",
+                "Data Mining",
+              ]}
+            />
+            <ProjectCard
+              title={
+                "WVSUTRACK: Western Visayas State University Fundays Scoreboard Tracker"
+              }
+              description={
+                "WVSUTRACK is a real-time scoreboard tracker for the Western Visayas State University Fundays, providing live updates on team scores and rankings. The application enhances the event experience by delivering instant information to participants and spectators."
+              }
+              image={"/wvsu-track.png"}
+              link={
+                "https://www.figma.com/design/fVxJ9MQYoEsS6uGfAKW5tj/WVSU-FUNDAYS-REAL-TIME-SCOREBOARD?node-id=0-1&t=yju4nXCAeGjRy8SV-1"
+              }
+              tags={[
+                "Figma",
+                "UI/UX Design",
+                "Prototyping",
+                "Web Design",
+                "Interaction Design",
+                "User Experience",
+                "Visual Design",
+                "Design System",
+                "Responsive Design",
+                "Wireframing",
+                "User Interface",
+                "Design Thinking",
+                "Collaboration",
+                "Team Project",
+              ]}
+            />
           </div>
         </section>
 
@@ -232,6 +295,7 @@ export default function Home() {
               my creative journey and aesthetics.
             </p>
           </div>
+          <DirectionAwareHover imageUrl={"/hero.svg"} children={undefined} />
         </section>
 
         {/* Contact Section */}

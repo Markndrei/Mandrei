@@ -26,9 +26,13 @@ export default function Home() {
           Photographer.
         </h3>
         {currentTheme === "dark" ? (
-          <DynamicButton text="VIEW RESUME" variant="dark" />
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+            <DynamicButton text="VIEW RESUME" variant="dark" />
+          </a>
         ) : (
-          <DynamicButton text="VIEW RESUME" variant="primary" />
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+            <DynamicButton text="VIEW RESUME" variant="primary" />
+          </a>
         )}
       </div>
       {currentTheme === "dark" ? (

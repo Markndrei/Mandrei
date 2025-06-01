@@ -86,15 +86,50 @@ export default function Home() {
         {/* About Section */}
         <section
           id="about"
-          className="min-h-screen flex items-center justify-center px-10"
+          className="flex flex-col items-center justify-center min-h-screen md:flex-row md:space-y-0 md:space-x-40"
         >
-          <div className="max-w-2xl text-center">
-            <h2 className="text-3xl font-bold mb-4">About Me</h2>
-            <p className="text-gray-700 dark:text-gray-300">
-              Hello! I&apos;m Mark, a passionate front-end developer who loves
-              designing engaging user experiences. I enjoy crafting clean,
-              accessible, and responsive web applications using modern
-              technologies.
+          <div>
+            {currentTheme === "dark" ? (
+              <Image
+                src="/about-dark.svg"
+                width={600}
+                height={600}
+                alt="About me image"
+              />
+            ) : (
+              <Image
+                src="/about-light.svg"
+                width={600}
+                height={600}
+                alt="About me image"
+              />
+            )}
+          </div>
+          <div className="max-w-xl text-left tracking-wide">
+            {currentTheme === "light" ? (
+              <Image
+                src="/about-title-light.svg"
+                width={300}
+                height={100}
+                alt="About me image"
+              />
+            ) : (
+              <h2
+                className="text-[4.5rem] font-black bg-gradient-to-r from-[#404040] to-[#404040]
+                dark:from-[#80CEFF] dark:to-[#F7B2FD]
+                bg-clip-text text-transparent
+                transition-colors duration-500 my-0 scale-0 dark:scale-100"
+              >
+                about.
+              </h2>
+            )}
+
+            <h4 className="text-[1.2rem] font-normal text-gray-600 dark:text-gray-300 opacity-60">
+              I am a designer slash developer based in Iloilo, Philippines.
+            </h4>
+            <p className="text-[1.2rem] text-gray-700 dark:text-gray-300 mt-4 font-normal">
+              Fell for intuitive design in 2016. When I'm not tweaking REMs, I'm
+              probably chasing wins on League.
             </p>
           </div>
         </section>

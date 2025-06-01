@@ -4,6 +4,7 @@ import Image from "next/image";
 import { DynamicButton } from "@/components/DynamicButton";
 import SideNavigation from "@/components/SideNavigation";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
+import ProjectCard from "@/components/ProjectCards";
 
 export default function Home() {
   const { theme, systemTheme } = useTheme();
@@ -135,7 +136,7 @@ export default function Home() {
         </section>
 
         {/* Projects Section */}
-        <section id="projects" className="min-h-screen flex px-10  pt-30">
+        <section id="projects" className="min-h-screen px-10  pt-30">
           <div className="max-w-[50%] text-left">
             <h1
               className="text-[4.5rem] font-black
@@ -151,6 +152,71 @@ export default function Home() {
               portfolio websites, mobile UI designs, and interactive front-end
               builds.
             </p>
+          </div>
+          <div className="mt-10 grid lg:grid-cols-1 md:grid-cols-2 gap-8">
+            <ProjectCard
+              title={"Kantonize: Pancit Canton Customizer"}
+              description={
+                "Kantonize is a frontend-only web application that allows users to customize their Pancit Canton (a popular Filipino instant noodle dish) based on their preferences. Users can select ingredients, spice levels, and additional toppings to create their perfect bowl of noodles. The app provides a fun, interactive way to visualize their customized dish before preparation."
+              }
+              image={"/kantonize.png"}
+              link={"https://kantonize.vercel.app"}
+              tags={[
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "React",
+                "Next.js",
+                "Tailwind CSS",
+                "Frontend",
+                "Web Development",
+                "UI/UX Design",
+                "Frame Motion",
+              ]}
+            />
+            <ProjectCard
+              title={"IPSYNC: Internship and Project Collaboration Hub"}
+              description={
+                "IPsync is a full-stack web platform designed to bridge the gap between academia and industry by connecting students with real-world internships, faculty with research collaborations, and industry partners with emerging talent. The platform fosters skill development, networking, and project-based learning through seamless digital interactions."
+              }
+              image={"/ipsync.png"}
+              link={"https://ipsync.vercel.app"}
+              tags={[
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "Vue.js",
+                "Tailwind CSS",
+                "Full-Stack Development",
+                "Web Development",
+                "UI/UX Design",
+                "Responsive Design",
+                "API Integration",
+                "Database Management",
+                "Authentication",
+              ]}
+            />
+            <ProjectCard
+              title={"HCI: Jinjaroos Group Website"}
+              description={
+                "This website was curated to introduce the interdisciplinary HCI team behind IPSYNC, crafting an inclusive platform that redefines how students, faculty, and industry partners collaborate. Our human-centered approach ensures seamless interactions while addressing real-world educational gaps."
+              }
+              image={"/hci-group.png"}
+              link={"https://hci-group-website.vercel.app"}
+              tags={[
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "React",
+                "Next.js",
+                "Tailwind CSS",
+                "Frontend",
+                "Web Development",
+                "UI/UX Design",
+                "Animation",
+                "Particles",
+              ]}
+            />
           </div>
         </section>
 

@@ -11,10 +11,10 @@ export function Navbar() {
 
         <div className="flex items-center space-x-20 font-light">
           {[
-            { href: "/", label: "about." },
-            { href: "/", label: "projects." },
-            { href: "/", label: "gallery." },
-            { href: "/", label: "contact." },
+            { href: "#about", label: "about." },
+            { href: "#projects", label: "projects." },
+            { href: "#gallery", label: "gallery." },
+            { href: "#contact", label: "contact." },
           ].map((link) => (
             <Link
               key={link.label}

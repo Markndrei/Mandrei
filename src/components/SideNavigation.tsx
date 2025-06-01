@@ -14,7 +14,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
 }) => {
   return (
     <div className="fixed right-1 top-3/4 transform -translate-y-1/2 z-50">
-      <div className="flex flex-col space-y-2">
+      <div className="flex flex-col space-y-1">
         {sections.map((section, index) => (
           <button
             key={index}
@@ -29,8 +29,8 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
               />
             ) : (
               <Dot
-                size={20}
-                className="group-hover:text-[#E0790B] text-gray-400 dark:group-hover:text-purple-400 transition-colors duration-200"
+                size={30}
+                className="group-hover:text-[#E0790B] text-gray-400 dark:text-[#FFFFF4] dark:group-hover:text-purple-400 transition-colors duration-200"
               />
             )}
             <div className="absolute right-full mr-3 px-2 py-1 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">

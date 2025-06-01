@@ -25,8 +25,26 @@ export default function Home() {
 
       {/* Hero Content */}
       <main className="px-[10%]">
-        <div className="flex flex-col items-center justify-center min-h-screen space-y-10 md:flex-row md:space-y-0 md:space-x-40">
-          <section id="hero" className="space-y-4">
+        <section
+          id="hero"
+          className="flex flex-col items-center justify-center min-h-screen space-y-10 md:flex-row md:space-y-0 md:space-x-40"
+        >
+          <div className="space-y-4">
+            <div
+              className={`
+          absolute inset-0 pointer-events-none transition-opacity duration-500
+          ${currentTheme === "light" ? "opacity-100" : "opacity-0"}
+        `}
+            >
+              {/* Top border */}
+              <div className="absolute top-[7.5%] left-[5%] right-[47%] h-[0.07rem] bg-gray-500"></div>
+              {/* Bottom border */}
+              <div className="absolute bottom-[86%] left-[5%] right-[47%] h-[0.07rem] bg-gray-500"></div>
+              {/* Left border */}
+              <div className="absolute top-[6%] bottom-[85%] left-[8%] w-[0.07rem] bg-gray-500"></div>
+              {/* Right border */}
+              <div className="absolute top-[6%] bottom-[85%] right-[50%] w-[0.07rem] bg-gray-500"></div>
+            </div>
             <h5 className="-my-1">i am</h5>
             <h1
               className="text-[4.5rem] font-black
@@ -47,7 +65,7 @@ export default function Home() {
                 variant={currentTheme === "dark" ? "dark" : "primary"}
               />
             </a>
-          </section>
+          </div>
           {currentTheme === "dark" ? (
             <Image
               src="/hero.svg"
@@ -63,7 +81,7 @@ export default function Home() {
               alt="Light mode image"
             />
           )}
-        </div>
+        </section>
 
         {/* About Section */}
         <section

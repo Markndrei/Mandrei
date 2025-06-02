@@ -13,7 +13,7 @@ export function Navbar() {
   const navLinks = [
     { href: "#about", label: "about." },
     { href: "#projects", label: "projects." },
-    { href: "#gallery", label: "gallery." },
+    // { href: "#gallery", label: "gallery." },
     { href: "#contact", label: "contact." },
   ];
 

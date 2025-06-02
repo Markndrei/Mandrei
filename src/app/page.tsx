@@ -1,16 +1,48 @@
 "use client";
+import Link from "next/link";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { DynamicButton } from "@/components/DynamicButton";
 import SideNavigation from "@/components/SideNavigation";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import ProjectCard from "@/components/ProjectCards";
-import { DirectionAwareHover } from "@/components/ui/DirectionAwareHover";
+import {
+  FaLinkedin,
+  FaGithub,
+  FaBehance,
+  FaFacebook,
+  FaInstagram,
+} from "react-icons/fa";
+import ContactForm from "@/components/contactEmail";
+
+const socialLinks = [
+  {
+    name: "LinkedIn",
+    icon: <FaLinkedin />,
+    url: "https://www.linkedin.com/in/mark-andrei-encanto-962179351/",
+  },
+  { name: "GitHub", icon: <FaGithub />, url: "https://github.com/Markndrei" },
+  {
+    name: "Behance",
+    icon: <FaBehance />,
+    url: "https://www.behance.net/markanencanto",
+  },
+  {
+    name: "Facebook",
+    icon: <FaFacebook />,
+    url: "https://web.facebook.com/markndrei/",
+  },
+  {
+    name: "Instagram",
+    icon: <FaInstagram />,
+    url: "https://www.instagram.com/markndrei/",
+  },
+];
 
 export default function Home() {
   const { theme, systemTheme } = useTheme();
-  const sections = ["hero.", "about.", "projects.", "gallery.", "contact."];
-  const sectionIds = ["hero", "about", "projects", "gallery", "contact"];
+  const sections = ["hero.", "about.", "projects.", "contact."];
+  const sectionIds = ["hero", "about", "projects", "contact"];
   const { currentSection, scrollToSection } = useScrollSpy(sectionIds);
 
   const currentTheme = theme === "system" ? systemTheme : theme;
@@ -73,7 +105,6 @@ export default function Home() {
             />
           </div>
         </section>
-
         {/* About Section */}
         <section
           id="about"
@@ -124,7 +155,6 @@ export default function Home() {
             </p>
           </div>
         </section>
-
         {/* Projects Section */}
         <section id="projects" className="min-h-screen px-10  pt-30">
           <div className="max-w-[50%] text-left">
@@ -282,8 +312,7 @@ export default function Home() {
             />
           </div>
         </section>
-
-        {/* Gallery Section */}
+        {/* Gallery Section
         <section
           id="gallery"
           className="min-h-screen flex items-center justify-center px-10"
@@ -296,21 +325,75 @@ export default function Home() {
             </p>
           </div>
           <DirectionAwareHover imageUrl={"/hero.svg"} children={undefined} />
-        </section>
+        </section> */}
 
         {/* Contact Section */}
-        <section
-          id="contact"
-          className="min-h-screen flex items-center justify-center px-10 bg-gray-100 dark:bg-gray-800"
-        >
-          <div className="max-w-xl text-center">
-            <h2 className="text-3xl font-bold mb-4">Contact</h2>
-            <p className="text-gray-700 dark:text-gray-300 mb-2">
-              Feel free to reach out for collaborations or just to say hi!
-            </p>
-            <p className="text-gray-700 dark:text-gray-300">
-              Email: marksamplelamang@this.is.it
-            </p>
+        <section id="contact" className="bg-cream min-h-screen p-8 pt-30">
+          {/* Contact Header */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-10">
+            <div className="space-y-6">
+              <h2
+                className="text-[4.5rem] font-black
+                bg-gradient-to-r from-[#404040] to-[#404040]
+                dark:from-[#80CEFF] dark:to-[#F7B2FD]
+                bg-clip-text text-transparent
+                transition-colors duration-500 my-0"
+              >
+                contact.
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400">
+                contact me through my social media accounts
+              </p>
+
+              {/* Social Links */}
+              <ul className="space-y-2">
+                {socialLinks.map((link, index) => (
+                  <li key={index} className="flex items-center gap-3">
+                    <Link
+                      href={link.url}
+                      passHref
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 hover:text-blue-600 transition-colors dark:hover:text-pink-500"
+                    >
+                      {link.icon} {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Profile Image with Decorative Layers */}
+            <div className="relative">
+              {currentTheme === "dark" ? (
+                <Image
+                  src="/contact-dark.svg"
+                  width={400}
+                  height={400}
+                  alt="About me image"
+                />
+              ) : (
+                <Image
+                  src="/contact-light.svg"
+                  width={400}
+                  height={400}
+                  alt="About me image"
+                />
+              )}
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="w-full h-px bg-gray-300 my-12" />
+
+          {/* Email Form */}
+          <div className="mt-8">
+            <h3 className="text-4xl font-extrabold flex items-center gap-2">
+              <span className="w-4 h-4 bg-orange-600 dark:bg-pink-600 rounded-full inline-block"></span>
+              send me an email.
+            </h3>
+
+            <ContactForm />
           </div>
         </section>
       </main>

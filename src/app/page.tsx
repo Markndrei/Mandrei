@@ -6,6 +6,8 @@ import { DynamicButton } from "@/components/DynamicButton";
 import SideNavigation from "@/components/SideNavigation";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import ProjectCard from "@/components/ProjectCards";
+import { useEffect, useState } from "react";
+
 import {
   FaLinkedin,
   FaGithub,
@@ -44,6 +46,11 @@ export default function Home() {
   const sections = ["hero.", "about.", "projects.", "contact."];
   const sectionIds = ["hero", "about", "projects", "contact"];
   const { currentSection, scrollToSection } = useScrollSpy(sectionIds);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const currentTheme = theme === "system" ? systemTheme : theme;
 
@@ -87,22 +94,26 @@ export default function Home() {
               rel="noopener noreferrer"
               aria-label="View Mark Encanto's Resume"
             >
-              <DynamicButton
-                text="VIEW RESUME"
-                variant={currentTheme === "dark" ? "dark" : "primary"}
-              />
+              {isMounted && (
+                <DynamicButton
+                  text="VIEW RESUME"
+                  variant={currentTheme === "dark" ? "dark" : "primary"}
+                />
+              )}
             </a>
           </div>
 
           {/* Hero Image */}
           <div className="relative z-10">
-            <Image
-              src={currentTheme === "dark" ? "/hero.svg" : "/hero-light.svg"}
-              width={450}
-              height={450}
-              alt="Illustration of developer in dark/light theme"
-              priority
-            />
+            {isMounted && (
+              <Image
+                src={currentTheme === "dark" ? "/hero.svg" : "/hero-light.svg"}
+                width={450}
+                height={450}
+                alt="Illustration of developer in dark/light theme"
+                priority
+              />
+            )}
           </div>
         </section>
         {/* About Section */}
@@ -111,40 +122,39 @@ export default function Home() {
           className="flex flex-col items-center justify-center min-h-screen md:flex-row md:space-y-0 md:space-x-40"
         >
           <div>
-            {currentTheme === "dark" ? (
+            {isMounted && (
               <Image
-                src="/about-dark.svg"
-                width={600}
-                height={600}
-                alt="About me image"
-              />
-            ) : (
-              <Image
-                src="/about-light.svg"
-                width={600}
-                height={600}
-                alt="About me image"
+                src={
+                  currentTheme === "dark"
+                    ? "/about-dark.svg"
+                    : "/about-light.svg"
+                }
+                width={450}
+                height={450}
+                alt="Illustration of developer in dark/light theme"
+                priority
               />
             )}
           </div>
           <div className="max-w-xl text-left tracking-wide">
-            {currentTheme === "light" ? (
-              <Image
-                src="/about-title-light.svg"
-                width={300}
-                height={100}
-                alt="About me image"
-              />
-            ) : (
-              <h2
-                className="text-[4.5rem] font-black bg-gradient-to-r from-[#404040] to-[#404040]
-                dark:from-[#80CEFF] dark:to-[#F7B2FD]
-                bg-clip-text text-transparent
-                transition-colors duration-500 my-0 scale-0 dark:scale-100"
-              >
-                about.
-              </h2>
-            )}
+            {isMounted &&
+              (currentTheme === "light" ? (
+                <Image
+                  src="/about-title-light.svg"
+                  width={300}
+                  height={100}
+                  alt="About me image"
+                />
+              ) : (
+                <h2
+                  className="text-[4.5rem] font-black bg-gradient-to-r from-[#404040] to-[#404040]
+      dark:from-[#80CEFF] dark:to-[#F7B2FD]
+      bg-clip-text text-transparent
+      transition-colors duration-500 my-0 scale-0 dark:scale-100"
+                >
+                  about.
+                </h2>
+              ))}
 
             <h4 className="text-[1.2rem] font-normal text-gray-600 dark:text-gray-300 opacity-60">
               I am a designer slash developer based in Iloilo, Philippines.
@@ -365,19 +375,17 @@ export default function Home() {
 
             {/* Profile Image with Decorative Layers */}
             <div className="relative">
-              {currentTheme === "dark" ? (
+              {isMounted && (
                 <Image
-                  src="/contact-dark.svg"
-                  width={400}
-                  height={400}
-                  alt="About me image"
-                />
-              ) : (
-                <Image
-                  src="/contact-light.svg"
-                  width={400}
-                  height={400}
-                  alt="About me image"
+                  src={
+                    currentTheme === "dark"
+                      ? "/contact-dark.svg"
+                      : "/contact-light.svg"
+                  }
+                  width={450}
+                  height={450}
+                  alt="Illustration of developer in dark/light theme"
+                  priority
                 />
               )}
             </div>

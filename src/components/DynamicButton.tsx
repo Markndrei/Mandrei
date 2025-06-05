@@ -1,4 +1,7 @@
 "use client";
+
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 import { ButtonHTMLAttributes } from "react";
 
 type ButtonVariants = "dark" | "primary" | "secondary";
@@ -18,13 +21,20 @@ const VariantStyles: Record<ButtonVariants, string> = {
     "bg-[#EFE00A] font-[500]  text-white rounded-tl-[0.5rem] rounded-tr-[1.5rem] rounded-bl-[1.5rem] rounded-br-[0.5rem] hover:bg-yellow-700 px-10 tracking-widest",
 };
 
-export function DynamicButton({
-  text,
-  variant = "primary",
-  className = "",
-  ...props
-}: ButtonProps) {
+export function DynamicButton({ text, className = "", ...props }: ButtonProps) {
+  const { theme, systemTheme } = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const currentTheme = theme === "system" ? systemTheme : theme;
+  const variant: ButtonVariants = currentTheme === "dark" ? "dark" : "primary";
   const variantStyle = VariantStyles[variant];
+
+  if (!isMounted) return null;
+
   return (
     <button className={`${BaseStyles} ${variantStyle} ${className}`} {...props}>
       {text}
